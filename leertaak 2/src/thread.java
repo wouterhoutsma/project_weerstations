@@ -20,14 +20,18 @@ public class thread implements Runnable{
         try {
             StringBuffer buffer = new StringBuffer();
             BufferedReader bf = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            String receiveResult = null;
-            buffer.append(receiveResult);
+            String receiveResult;
             while((receiveResult = bf.readLine()) != null){
-                try {
-                    sem.acquire();
-                        queue.add(receiveResult);
-                    sem.release();
-                }catch (InterruptedException eo){}
+                buffer.append(receiveResult);
+                buffer.append("\n");
+                if(receiveResult.startsWith("</WEATHERDATA>")) {
+                    try {
+                        sem.acquire();
+                        queue.add(buffer.toString());
+                        sem.release();
+                    } catch (InterruptedException eo) {
+                    }
+                }
             }
         }catch (IOException e){
         }
