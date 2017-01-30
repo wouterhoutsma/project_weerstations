@@ -8,9 +8,11 @@
 
     public function index(){
       //Database::getInstance();
-      $title = 'Welkom';
+      $title = 'Welcome m8';
       $user = new User();
-      $user->get();
-      $this->view('frontpage', compact('title'));
+      $users = $user->select()->where('user_id', '=', 2)->first();
+      $user_id = $users->user_id;
+      //var_dump($users);
+      $this->view('frontpage', compact('title', 'user_id'));
     }
   }
