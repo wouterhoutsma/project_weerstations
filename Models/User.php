@@ -7,9 +7,8 @@ class User extends Model {
 
   public function __construct(){}
 
-  public function makePassword($password){
-    // encrypt shit
-    // return password
+  public static function make_password($password){
+    return hash_hmac('sha1', $password, 'weatherstations1234hoi' . $password); // DO NOT MESS WITH KEY
   }
 }
 ?>

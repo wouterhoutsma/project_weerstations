@@ -1,0 +1,6 @@
+# Jetbrains
+/.idea/
+/.idea/*.*
+
+# Settings
+settings.json
