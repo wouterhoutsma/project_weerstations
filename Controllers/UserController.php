@@ -1,9 +1,9 @@
 <?php
 
-  class UserController {
+  class UserController extends Controller{
     public function __construct(){}
 
     public function show_settings($firstArg){
-      var_dump($firstArg);
+        $this->view('controlpanel');
     }
   }
