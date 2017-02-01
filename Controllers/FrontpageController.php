@@ -5,6 +5,7 @@
   use Model\Auth;
 
   class FrontpageController extends Controller{
+    public $hoi = "blub"
     public function __construct(){}
 
     public function index(){
@@ -22,6 +23,12 @@
 
     public function submit(){
 
+    }
+    public function login(){
+      echo "Hello";
+      $hoi = $this->hoi;
+      ['hoi', 'blub']
+      $this->view('frontpage', compact('hoi'));
     }
   }
 ?>

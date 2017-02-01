@@ -18,3 +18,17 @@ body{
 .sidenave a {
     font-size:100px;
 }
+
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 45px;
+}
+
+/* Padding for spacing */
+.inner {
+    padding: 30px;
+}
