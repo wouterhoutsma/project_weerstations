@@ -9,17 +9,10 @@
     public function __construct(){}
 
     public function index(){
-      //Database::getInstance();
       $title = 'Welcome m8';
-      //$user = new User();
-
-
       $this->view('frontpage', compact('title'));
     }
 
-    public function submit(){
-
-    }
     public function login(){
       echo "Hello";
       $hoi = $this->hoi;
