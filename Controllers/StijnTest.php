@@ -4,7 +4,7 @@ class StijnTest extends Controller{
     public function __construct(){}
 
     public function index(){
-        $this->view('frontpage', compact('title'));
+        $this->view('createNewAccount', compact('title'));
     }
   }
 ?>
