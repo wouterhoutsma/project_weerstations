@@ -2,6 +2,8 @@
 body{
     margin:0px;
     background-color: aliceblue;
+    position: relative;
+    min-height: 100vh; /* vh = vertical height, 100vh = screen size */
 }
 
 #header {
@@ -118,16 +120,18 @@ input[type=password]:focus{
     align-items: center;
 }
 
-
+#footerspacer{
+  height: 115px; /* Must be height of footer + margin for randje */
+  position: relative;
+}
 .footer {
     background-color:white;
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 100%;
     border-top:solid;
     border-color:#0003d1;
     text-align: center;
-    height: 45px;
 }
 
 /* Padding for spacing */
