@@ -8,6 +8,7 @@
     protected $sql;
     protected $mode;  // select | update | insert | delete
     protected $where_set = false;
+    protected $fillable = [];
     public $result;
 
     protected function getTable(){
@@ -35,29 +36,101 @@
         }
         return $this;
     }
+    /**
+    * Insert the given key array into the table.
+    *
+    * @return False if mode isn't set, self on success (to chain methods).
+    */
+    public function insert($keyArray){
+      if(!isset($this->mode)){
+        $this->mode = 'insert';
+        $values = "";
+        $keys = "";
+        $count = 0;
+        foreach($keyArray as $key => $value){
+          if(in_array($key, $this->fillable)){
+            $format = (!in_array(gettype($value), ['integer', 'double'])) ? "'%s'" : "%s";
+            if($count == 0){
+              $keys .= '`' . $key . '`';
+              $values .= sprintf($format, $value);
+            }
+            else{
+              $keys .= ', `' . $key . '`';
+              $values .= ', ' . sprintf($format,$value);
+            }
+            $count++;
+          }
+          else{
+            return false;
+          }
+        }
+        $values = "($values)";
+        $keys = "($keys)";
+        $this->sql = "INSERT INTO `" . $this->getTable() . "` $keys VALUES $values";
+        return $this->execute();
+      }
+      else{
+        return false;
+      }
+    }
 
-    public function where($key, $mode, $value, $enclosed = false){
+    public function update($keyArray = []){
+      if(!is_array($keyArray))
+        return false;
+      if($this->mode == 'update' && empty($keyArray))
+        return $this->execute();
+      if(isset($this->mode))
+        return false;
+
+      $this->mode = "update";
+      $this->sql = sprintf("UPDATE `%s` SET ", $this->getTable());
+      $set = "";
+      $count = 0;
+      foreach($keyArray as $key => $value){
+        $format = (!in_array(gettype($value), ['integer', 'double'])) ? "'%s'" : "%s";
+        if($count == 0)
+          $set .= sprintf("`%s` = $format", $key, $value);
+        else
+          $set .= sprintf(", `%s` = $format", $key, $value);
+        $count++;
+      }
+      $this->sql .= $set;
+      return $this;
+    }
+
+    public function delete($go = false){
+      if(isset($this->mode))
+        if($this->mode == 'delete' && $go)
+          return $this->execute();
+        else
+          return false;
+
+      $this->mode = 'delete';
+      $this->sql = sprintf("DELETE FROM `%s`", $this->getTable());
+      return $this;
+    }
+    public function where($key, $operator, $value, $enclosed = false){
       $add = ($this->where_set) ? "AND" : "WHERE";
       $enclosure = ($enclosed) ? "'" : "";
-
-      if(in_array($mode, ['=', '>', '<', '>=', '<>', '<='])){
-        if(in_array($this->mode, ['select','update','delete'])){
+      if(in_array($this->mode, ['select','update','delete'])){
+        if(in_array($operator, ['=', '>', '<', '>=', '<>', '<='])){
           $this->where_set = true;
-          $this->sql .= " $add `" . htmlentities($key) . "` $mode " . $enclosure . htmlentities($value) . $enclosure;
+          $this->sql .= " $add `" . htmlentities($key) . "` $operator " . $enclosure . htmlentities($value) . $enclosure;
           return $this;
         }
-      }
-      elseif($mode == 'in'){
-        $this->where_set = true;
-        if(is_array($value)){
-          $value_string = "";
-          for($i=0; $i < count($value); $i++){
-            $value_string .= htmlentities($value);
-            if($i == count($value)-1)
-              $value_string .= ", ";
+        elseif($operator == 'in'){
+          $this->where_set = true;
+          if(is_array($value)){
+            $value_string = "";
+            for($i=0; $i < count($value); $i++){
+              if($i != 0)
+                $value_string .= ", ";
+              $value_string .= htmlentities($value[$i]);
+            }
+            $operator = strtoupper($operator);
+            $this->sql .= " $add `" . htmlentities($key) . "` $operator (" . $value_string . ")";
+            return $this;
           }
-          $this->sql .= " $add `" . htmlentities($key) . "` $mode (" . $value_string . ")";
-          return $this;
         }
       }
     }
@@ -74,21 +147,41 @@
     public function first(){
       if(isset($this->sql) && $this->mode == 'select'){
         $this->sql .= " LIMIT 1";
-        return $this->execute()[0];
+        $result = $this->execute();
+        if(empty($result))
+          return false;
+        return $result[0];
       }
     }
     protected function execute(){
       $db = Database::getInstance();
       $this->result = [];
-      $res = $db->query($this->sql);
-      if($res){
-        while($tempRes = $res->fetch_object()){
-          $this->result[] = $tempRes;
+
+      if($this->mode == 'select'){
+        $res = $db->query($this->sql);
+        if($res){
+          while($tempRes = $res->fetch_object()){
+            $this->result[] = $tempRes;
+          }
+          $this->mode = null;
+          $this->sql = null;
+          $this->where_set = false;
+          return $this->result;
         }
-        return $this->result;
+        else{
+          return false;
+        }
       }
       else{
-        return false;
+        if($this->mode == 'insert'){
+          $db->query($this->sql);
+          return $db->insert_id;
+        }
+        $db->query($this->sql);
       }
+      $this->mode = null;
+      $this->sql = null;
+      $this->where_set = false;
+
     }
   }

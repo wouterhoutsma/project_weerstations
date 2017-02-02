@@ -8,15 +8,9 @@
     public function __construct(){}
 
     public function index(){
-      //Database::getInstance();
       $title = 'Welcome m8';
-      //$user = new User();
-      var_dump(Auth::isLoggedIn());
-    /*  $users = $user->select()
-            ->where('email', '=', $email, 1)
-            ->where('password', '=', User::make_password($password), 1)
-            ->first();*/
-
+      $user = new User();
+      var_dump(Auth::isAdmin());
       $this->view('frontpage', compact('title'));
     }
 
