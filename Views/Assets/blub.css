@@ -130,12 +130,17 @@ input[type=password]:focus{
     height: 45px;
 }
 
-/* Padding for spacing */
+
 .inner {
     padding: 30px;
     background-color:white;
 
 }
+/*!
+ * Bootstrap v3.3.5 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ *//*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 .form-signin {
     max-width: 330px;
@@ -168,17 +173,6 @@ input[type=password]:focus{
     z-index: 2;
 }
 
-.form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
 .sr-only{
     position:absolute;
     width:1px;
@@ -215,10 +209,3 @@ input[type=password]:focus{
     display:block;
     width:100%}
 
-
-.container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}

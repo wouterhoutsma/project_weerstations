@@ -1,6 +1,6 @@
 <?php
 
-class StijnTest extends Controller{
+class NewAccount extends Controller{
     public function __construct(){}
 
     public function index(){
