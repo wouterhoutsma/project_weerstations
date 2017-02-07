@@ -153,7 +153,7 @@
         return $result[0];
       }
     }
-    protected function execute(){
+    public function execute(){
       $db = Database::getInstance();
       $this->result = [];
 
