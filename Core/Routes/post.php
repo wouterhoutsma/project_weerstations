@@ -1,4 +1,4 @@
 <?php
   use Core\Router;
 
-  Router::route('/blubje', 'FrontpageController.submit');  // Frontpage
+  Router::route('/login', 'FrontpageController.login');  // Frontpage

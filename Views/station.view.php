@@ -1,13 +1,10 @@
 <?php
 $this->view('header', compact('title')); ?>
-
-
-
 <?php
 $this->view('sidebar', compact('admin'));
 ?>
     <div id="content">
-        Welkom buddy
+        Hier komt station <?php echo $station; ?>
     </div>
 
 <?php

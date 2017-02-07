@@ -19,13 +19,5 @@ class Database extends mysqli{
         }
         return self::$instance;
     }
-  //
-  // public function execute($sql, $params){
-  //   $index = 1;
-  //   foreach($params as $param){
-  //     $sql = str_replace('($' . $index . ')', htmlentities($param));
-  //     $index++;
-  //   }
-  // }
 }
 ?>
