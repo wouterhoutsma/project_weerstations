@@ -9,6 +9,7 @@
     public function __construct(){}
 
     public function index(){
+
       if(Auth::isLoggedIn()){
         $title = "Sign in";
         $this->view('signin', compact('title'));
