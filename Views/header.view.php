@@ -13,6 +13,7 @@
   <div id="header">
      SA Weather
       <div class="slogan">
+          <a href='/logout'>Logout</a><br/>
           Slogan placeholder
       </div>
   </div>
