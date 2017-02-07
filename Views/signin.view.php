@@ -25,6 +25,13 @@ $this->view('header', compact('title'));
             <br/>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             <br/>
+            <?php if(isset($error)){ ?>
+            <div class="error">
+
+                <?php echo $error; ?>
+            </div>
+            <?php } ?>
+
         </div>
 </div>
 

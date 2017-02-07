@@ -67,7 +67,7 @@ class Auth extends Model {
     }
   }
 
-  private static function calculateHash($userid, $timestamp){
+  public static function calculateHash($userid, $timestamp){
     return hash_hmac('sha1', $timestamp, $userid . 'weerstationsession'. $timestamp);
   }
 
