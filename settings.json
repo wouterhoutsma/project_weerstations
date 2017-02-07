@@ -1,6 +1,6 @@
 {
   "user"      : "root",
-  "password"  : "",
-  "host"      : "localhost",
-  "database"  : "weather"
+  "password"  : "root",
+  "host"      : "145.33.225.149",
+  "database"  : "unwdmi"
 }
