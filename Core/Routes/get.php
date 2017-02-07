@@ -9,4 +9,5 @@
   Router::route('/UserConfiguration', 'UserConfiguration.index');
   Router::route('/createNewAccount', 'NewAccount.index'); # Create new account
   Router::route('/assets/{file_name}', 'AssetController.asset');
+  Router::route('/butt', 'butt.index'); # Create new account
 ?>

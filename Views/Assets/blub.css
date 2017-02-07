@@ -259,3 +259,12 @@ div.panel {
        overflow: hidden;
        transition: max-height 0.2s ease-out;
    }
+
+.img {
+    transform: inherit;
+    transition: all 4s;
+    width: 100px;
+}
+.img:hover {
+    transform: rotateX(1080deg);
+}
