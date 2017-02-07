@@ -47,7 +47,12 @@ path {
     clear: both;
 }
 
+.error {
+    background-color: rgba(255, 11, 0, 0.45);
+    padding:10px;
+    border-radius:3px;
 
+}
 .sidenav a {
     font-family: Verdana, Arial;
     font-size:small;
