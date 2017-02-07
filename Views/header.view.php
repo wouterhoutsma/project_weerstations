@@ -8,6 +8,11 @@
         $base_url = $http . "://" . $host;
         ?>
       <link rel='stylesheet' href="<?php echo $base_url; ?>/assets/blub.css" type="text/css" />
-      <h1>SA weather</h1>
-  <head>
+  </head>
   <body>
+  <div id="header">
+     SA Weather
+      <div class="slogan">
+          Slogan placeholder
+      </div>
+  </div>
