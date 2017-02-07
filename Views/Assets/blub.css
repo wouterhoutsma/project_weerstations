@@ -80,8 +80,7 @@ path {
 }
 
 #accountsettings {
-    /* margin-left:175px; */
-    /* float:right; */
+    max-width: 600px;
     background-color:white;
     padding:20px;
     padding-top:50px;
