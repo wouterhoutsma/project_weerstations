@@ -6,7 +6,7 @@
   Router::route('/', 'FrontpageController.index');  // Frontpage
 
   Router::route('/station/{station_number}', 'StationController.index');
-
-  Router::route('/createNewAccount', 'NewAccount.index'); # Stijn view test
+  Router::route('/UserConfiguration', 'UserConfiguration.index');
+  Router::route('/createNewAccount', 'NewAccount.index'); # Create new account
   Router::route('/assets/{file_name}', 'AssetController.asset');
 ?>
