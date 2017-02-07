@@ -9,7 +9,7 @@
     public function __construct(){}
 
     public function index(){
-      $title = 'Welcome m8';
+      $title = 'Welcome';
       $this->view('frontpage', compact('title'));
     }
 

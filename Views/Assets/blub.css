@@ -90,21 +90,12 @@ label{
     display:inline-block;
     float:left;
 }
-input[type=text] {
+input[type=text], input[type=password], input[type=email]{
     border-top:none;
     border-left:none;
     border-right:none;
 }
-input[type=text]:focus{
-    outline:none;
-    border-bottom:2px solid #8b8b8b;
-}
-input[type=password] {
-    border-top:none;
-    border-left:none;
-    border-right:none;
-}
-input[type=password]:focus{
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
     outline:none;
     border-bottom:2px solid #8b8b8b;
 }
@@ -127,7 +118,7 @@ input[type=password]:focus{
     border-top:solid;
     border-color:#0003d1;
     text-align: center;
-    height: 45px;
+
 }
 
 /* Padding for spacing */
@@ -169,7 +160,6 @@ input[type=password]:focus{
 }
 
 .form-signin input[type="email"] {
-    margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
