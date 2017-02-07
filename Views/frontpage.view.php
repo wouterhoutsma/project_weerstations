@@ -19,7 +19,7 @@ $this->view('header', compact('title'));
         <div>
 
             <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <input type="text" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required>
             <br/>

@@ -11,7 +11,7 @@
   </head>
   <body>
   <div id="header">
-      SA Weather
+     SA Weather
       <div class="slogan">
           Slogan placeholder
       </div>
