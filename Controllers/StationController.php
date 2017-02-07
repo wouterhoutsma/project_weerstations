@@ -14,13 +14,9 @@
       }
       $admin = Auth::isAdmin();
       $title = "Weer station";
+      $auth = Auth::getInstance();
+      $auth->insert([keys]);
       $this->view('station', compact('title', 'admin', 'station'));
-    }
-
-    public function login(){
-      echo "Hier moet talitha login spul maken";
-      $title = $this->hoi;
-      $this->view('signin', compact('title'));
     }
   }
 ?>
