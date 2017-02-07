@@ -53,7 +53,6 @@ path {
     border-radius:3px;
 
 }
-
 .sidenav a {
     font-family: Verdana, Arial;
     font-size:small;
@@ -87,7 +86,8 @@ path {
 }
 
 #accountsettings {
-    max-width: 600px;
+    /* margin-left:175px; */
+    /* float:right; */
     background-color:white;
     padding:20px;
     padding-top:50px;
@@ -144,32 +144,12 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
     text-align: center;
 }
 
-.buttonRight{
-    max-width: 100px;
-    margin-left: 95%;
-
-}
-
 
 .inner {
-    width: 100%;
-    height: 100%;
     padding: 30px;
+    background-color:white;
 
 }
-
-.innerRight {
-    margin-left: 85%;
-    padding: 10px;
-
-}
-
-.accordion{
-    width: auto;
-    height: auto;
-
-}
-
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -249,32 +229,4 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-}
-/* end of bootstrap*/
-
-/* source w3schools*/
-button.accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-}
-
-/* source w3schools*/
-button.accordion.active, button.accordion:hover {
-    background-color: #ddd;
-}
-
-/* source w3schools*/
-div.panel {
-    padding: 0 18px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
 }
