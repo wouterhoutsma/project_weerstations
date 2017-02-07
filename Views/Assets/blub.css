@@ -19,6 +19,20 @@ body{
     border-color:#0003b1;
 }
 
+path {
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
 .sidenav {
     margin-top:5px;
     margin-bottom:5px;
@@ -153,11 +167,11 @@ input[type=password]:focus{
 }
 
 .form-signin .form-signin-heading,
-.form-signin .checkbox {
+.form-signin{
     margin-bottom: 10px;
 }
 
-.form-signin .checkbox {
+.form-signin{
     font-weight: normal;
 }
 
