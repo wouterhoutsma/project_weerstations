@@ -7,15 +7,13 @@
     public function __construct(){}
 
     public function index($station){
-      if(Auth::isLoggedIn()){
+      if(!Auth::isLoggedIn()){
         $title = "Sign in";
         $this->view('signin', compact('title'));
         exit();
       }
       $admin = Auth::isAdmin();
       $title = "Weer station";
-      $auth = Auth::getInstance();
-      $auth->insert([keys]);
       $this->view('station', compact('title', 'admin', 'station'));
     }
   }

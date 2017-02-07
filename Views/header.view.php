@@ -8,12 +8,30 @@
         $base_url = $http . "://" . $host;
         ?>
       <link rel='stylesheet' href="<?php echo $base_url; ?>/assets/blub.css" type="text/css" />
+      <?php
+        // Extra sources
+        if(isset($sources)){
+          foreach($sources as $source){
+            $s = explode('.', $source);
+            $s = array_reverse($s);
+            $type = $s[0];
+            switch($type){
+              case "js":
+                echo "<script type='text/javascript' src='". $base_url ."/assets/". $source ."'></script>\n";
+                break;
+              case "css":
+                echo "<link rel='stylesheet' href='". $base_url ."/assets/". $source ."'/>\n";
+                break;
+            }
+          }
+        }
+      ?>
   </head>
   <body>
   <div id="header">
      SA Weather
       <div class="slogan">
-          <a href='/logout'>Logout</a><br/>
+          <?php if(isset($_SESSION['user'])) { ?> <a href='/logout'>Logout</a><br/> <?php } ?>
           Slogan placeholder
       </div>
   </div>

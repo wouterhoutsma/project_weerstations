@@ -5,9 +5,16 @@ class AssetController extends Controller{
 
   public function asset($filename){
     $file = explode('.', $filename);
-    $fileType = $file[1];
-    header("Content-type: text/css");
-    die(file_get_contents(__DIR__ . '/../views/assets/' . $filename));
+    $file = array_reverse($file);
+    $fileType = $file[0];
+    switch($file[0]){
+      case 'css':
+        header("Content-type: text/css");
+        die(file_get_contents(__DIR__ . '/../Views/Assets/' . $filename));
+      case 'js':
+        header("Content-type: text/javascript");
+        die(file_get_contents(__DIR__ . '/../Views/Assets/Scripts/' . $filename));
+    }
   }
 }
 ?>

@@ -50,5 +50,10 @@
       $_SESSION['user'] = $hash;
       header("Location: /");  # Redirect to host (weather.app ie)
     }
+
+    public function logout(){
+      unset($_SESSION['user']);
+      header("Location: /");
+    }
   }
 ?>
