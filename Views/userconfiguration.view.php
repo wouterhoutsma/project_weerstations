@@ -7,11 +7,11 @@ $this->view('sidebar', compact('admin'));
 ?>
 
 <div id="content">
+<div id="accountsettings">
 
 
-    <div>
-        <a href ="/createnewaccount" class="button">Create new account</a>
-    </div>
+    <a href ="/createnewaccount" class="button createacc">Create new account</a>
+
 
     <div>
         <?php
@@ -21,13 +21,20 @@ $this->view('sidebar', compact('admin'));
         <div class="panel">
             <p>Phonenumber: <?php echo $detail['phone'];?></p>
             <p>Email: <?php echo $detail['email'];?></p>
-            <a href="/userconfiguration/delete/<?php echo $user_id ?>" class="button">Delete Account </a>
+            <a href="/confirmdelete/<?php echo $user_id ?>" class="button">Delete Account </a>
         </div>
         <?php
         }
         ?>
     </div>
-
+    <br>
+    <br>
+    <?php if(isset($message)){ ?>
+        <div class="noerror">
+            <?php echo $message; ?>
+        </div>
+    <?php } ?>
+</div>
 </div>
 
 <script>//source w3schools

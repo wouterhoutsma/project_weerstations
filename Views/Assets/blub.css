@@ -81,6 +81,11 @@ path {
     cursor: pointer;
     border-radius: 3px;
 }
+
+#accountsettings .button.createacc {
+    margin:0px;
+    margin-bottom:10px;
+}
 #package{
     position:absolute;
     bottom:0;
@@ -103,6 +108,7 @@ path {
     padding-top:5px;
     margin-left:170px;
     font-family:Verdana, Arial;
+
 
 }
 label{

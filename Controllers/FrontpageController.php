@@ -86,7 +86,7 @@
       if($_POST['newpassword'] != $_POST['confirmpassword']){
           $error .= "<li>The passwords don't match</li>";
       }
-      elseif(preg_match('/[A-Z]+[a-z]+[0-9]+/', $_POST['newpassword'])){
+      elseif(!preg_match('/[A-Z]+[a-z]+[0-9]+/', $_POST['newpassword'])){
           $error .= "<li>Password needs to contain a combination of uppercase, lowercase and number characters</li>";
       }
 

@@ -175,6 +175,8 @@
       else{
         if($this->mode == 'insert'){
           $db->query($this->sql);
+          $this->sql = null;
+          $this->mode = null;
           return $db->insert_id;
         }
         $db->query($this->sql);
