@@ -164,8 +164,6 @@ class UserConfiguration extends Controller{
         }
 
         //Get all from post
-        var_dump($_POST);
-
         $newaccemail = $_POST['inputEmail'];
         $newaccpassword = $_POST['inputPassword'];
         $newaccreppasword = $_POST['repeatPassword'];
@@ -212,7 +210,6 @@ class UserConfiguration extends Controller{
 
         //Get all details from all users
         $objdetails = $user->select(['user_id', 'firstname', 'lastname', 'phone', 'email'])->get();
-        var_dump($objdetails);
         $details = $this->getdetails($objdetails);
 
         $this->view('userConfiguration', compact('title', 'message', 'admin', 'details'));
