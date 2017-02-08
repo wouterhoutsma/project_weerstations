@@ -264,3 +264,8 @@ div.panel {
        overflow: hidden;
        transition: max-height 0.2s ease-out;
    }
+
+#ids {
+    display: inline;
+    padding-right: 30px;
+}

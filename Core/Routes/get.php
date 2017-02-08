@@ -11,6 +11,7 @@
 
   Router::route('/station/{station_number}', 'StationController.index');
   Router::route('/userconfiguration', 'UserConfiguration.index');
+  Router::route('/userconfiguration/delete/{user_id}', 'UserConfiguration.delete_account');
   Router::route('/createnewaccount', 'NewAccount.index'); # Create new account
   Router::route('/assets/{file_name}', 'AssetController.asset');
   //Router::route('/controlpanel', 'UserController.show_settings');

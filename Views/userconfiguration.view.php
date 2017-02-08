@@ -14,23 +14,18 @@ $this->view('sidebar', compact('admin'));
     </div>
 
     <div>
-        <button class="accordion">person 1</button>
+        <?php
+        foreach($details as $user_id=>$detail){
+            ?>
+        <button class="accordion"><?php echo "<div id='ids'>ID: <i>" . $user_id . "</i></div> Name: <i>" . $detail['name'] . "</i>"; ?></button>
         <div class="panel">
-            <p>test.....</p>
-            <a href="#" class="button">Delete Account </a>
+            <p>Phonenumber: <?php echo $detail['phone'];?></p>
+            <p>Email: <?php echo $detail['email'];?></p>
+            <a href="/userconfiguration/delete/<?php echo $user_id ?>" class="button">Delete Account </a>
         </div>
-
-        <button class="accordion">person 2</button>
-        <div class="panel">
-            <p>test....</p>
-            <a href="#" class="button">Delete Account </a>
-        </div>
-
-        <button class="accordion">person 3</button>
-        <div class="panel">
-            <p>test....</p>
-            <a href="#" class="button">Delete Account </a>
-        </div>
+        <?php
+        }
+        ?>
     </div>
 
 </div>

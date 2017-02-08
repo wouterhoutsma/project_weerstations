@@ -22,9 +22,24 @@ class UserConfiguration extends Controller{
         //Is current user admin?
         $admin = Auth::isAdmin();
 
-        $this->view('userConfiguration', compact('title', 'admin'));
+        //Get all details from all users
+        $objdetails = $user->select(['user_id', 'firstname', 'lastname', 'phone', 'email'])->get();
+
+        //Put all details as a string in an array
+        $details = [];
+        foreach($objdetails as $objdetail){
+            $details[$objdetail->user_id] = ['name'=>$objdetail->firstname . " " . $objdetail->lastname, 'email'=>$objdetail->email,'phone'=>$objdetail->phone];
+
+        }
+
+        $this->view('userConfiguration', compact('title', 'admin', 'details'));
 
 
+    }
+
+    public function delete_account($user_id){
+        echo "Delete " . $user_id . "?";
+        
     }
 }
 ?>
