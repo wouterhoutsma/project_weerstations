@@ -12,4 +12,6 @@
   Router::route('/userconfiguration', 'UserConfiguration.index');
   Router::route('/createnewaccount', 'NewAccount.index'); # Create new account
   Router::route('/assets/{file_name}', 'AssetController.asset');
+
+  Router::route('/getweatherdata/{station}', 'StationController.get_data'); # 'API' call for the stations
 ?>

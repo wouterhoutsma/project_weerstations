@@ -1,6 +1,6 @@
 <?php
 
-class UserConfiguration extends Controller{
+class UserConfiguration extends WeatherAppController{
     public function __construct(){}
 
     public function index(){

@@ -1,6 +1,6 @@
 <?php
 
-class NewAccount extends Controller{
+class NewAccount extends WeatherAppController{
     public function __construct(){}
 
     public function index(){

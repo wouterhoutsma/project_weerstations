@@ -26,7 +26,7 @@ class Auth extends Model {
     }
     return self::$instance;
   }
-  public static function isLoggedIn(){
+  public static function isLoggedIn($update = true){
     $auth = self::getInstance();
     //return [self::calculateHash(1, time()), time()];
     if(isset($auth->id))
@@ -47,13 +47,17 @@ class Auth extends Model {
               unset($_SESSION['user']);
               return false;
             }
-            else{
+            elseif($update){
               $new_hash = self::calculateHash($hash_data->user_id, $timestamp);
               $auth->update(['hash' => $new_hash, 'timestamp' => $timestamp])
                    ->where('hash', '=', $calculated_hash, 1)
                    ->update();
               $auth->id = $hash_data->user_id;
               $_SESSION['user'] = $new_hash;
+              return $auth->id;
+            }
+            else{
+              $auth->id = $hash_data->user_id;
               return $auth->id;
             }
           }

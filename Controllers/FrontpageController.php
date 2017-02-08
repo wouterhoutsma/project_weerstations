@@ -4,7 +4,7 @@
   use Model\User;
   use Model\Auth;
 
-  class FrontpageController extends Controller{
+  class FrontpageController extends WeatherAppController{
     public $hoi = "blub";
     public function __construct(){}
 
