@@ -3,7 +3,7 @@
 use Model\User;
 use Model\Auth;
 
-  class UserController extends Controller{
+class UserController extends WeatherAppController{
     public function __construct(){}
 
     public function show_settings(){

@@ -1,7 +1,12 @@
 <div id="SideNav" class ="sidenav">
-    <a href = "/station/1" class ="button">Weather Station 1</a>
-    <a href = "/station/2" class ="button">Weather Station 2</a>
-    <a href = "/station/3" class ="button">Weather Station 3</a>
+    <?php
+      $stations = $this->generateWeatherStations();
+      foreach($stations as $s){
+        $name = strtolower($s->name);
+        $name = ucwords($name, " \t\r\n\f\v/");
+        echo '<a href = "/station/'.$s->stn.'" class ="button">Weather Station <br/>'.$name.'</a>';
+      }
+    ?>
     <a href = "/settings" class ="button">Account</a>
     <?php
         //if user = admin then:
