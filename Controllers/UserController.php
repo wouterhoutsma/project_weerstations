@@ -4,6 +4,7 @@
     public function __construct(){}
 
     public function show_settings($firstArg){
-        $this->view('controlpanel');
+        $title = "Settings";
+        $this->view('controlpanel', compact('title'));
     }
   }

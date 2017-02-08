@@ -12,4 +12,5 @@
   Router::route('/userconfiguration', 'UserConfiguration.index');
   Router::route('/createnewaccount', 'NewAccount.index'); # Create new account
   Router::route('/assets/{file_name}', 'AssetController.asset');
+  Router::route('/controlpanel', 'UserController.show_settings');
 ?>
