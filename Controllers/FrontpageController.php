@@ -50,6 +50,12 @@
 
 
       $this->make_session($result->user_id);
+      if(isset($_POST['redirect'])){
+        if($_POST['redirect'] != '' && !in_array($_POST['redirect'], ['/login', '/firstlogin'])){
+          header("Location: " . $_POST['redirect']);
+          return;
+        }
+      }
       header("Location: /");  # Redirect to host (weather.app ie)
     }
     private function make_session($user_id){
