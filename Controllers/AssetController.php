@@ -1,6 +1,6 @@
 <?php
 
-class AssetController extends Controller{
+class AssetController extends WeatherAppController{
   public function __construct(){}
 
   public function asset($filename){

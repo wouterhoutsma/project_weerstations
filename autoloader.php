@@ -13,5 +13,6 @@
   }
 
   require('Controllers/Controller.php');
+  require('Controllers/WeatherAppController.php');
 
 ?>
