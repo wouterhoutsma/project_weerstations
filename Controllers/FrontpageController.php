@@ -85,10 +85,10 @@
       }
 
       if($_POST['newpassword'] != $_POST['confirmpassword']){
-        $error .= "<li>The passwords don't match</li>";
+          $error .= "<li>The passwords don't match</li>";
       }
       elseif(preg_match('/[A-Z]+[a-z]+[0-9]+/', $_POST['newpassword'])){
-
+          $error .= "<li>Password needs to contain a combination of uppercase, lowercase and number characters</li>";
       }
 
 
@@ -102,7 +102,7 @@
             continue;
           }
           else {
-            $error .= "<li>Only fill numbers in the phonenumber</li>";
+            $error .= "<li>Phonenumber should only consists of numbers</li>";
           }
 
       }

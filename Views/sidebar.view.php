@@ -2,7 +2,7 @@
     <a href = "/station/1" class ="button">Weather Station 1</a>
     <a href = "/station/2" class ="button">Weather Station 2</a>
     <a href = "/station/3" class ="button">Weather Station 3</a>
-    <a href = "/controlpanel" class ="button">Account</a>
+    <a href = "/settings" class ="button">Account</a>
     <?php
         //if user = admin then:
         if(isset($admin)){
