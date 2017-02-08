@@ -101,9 +101,6 @@ use Model\Auth;
 
         //Check Password, first: get current password
         if($oldpassword != "") {
-
-
-            var_dump($user_id);
             $password = $user->select(['password'])
                 ->where('user_id', '=', $user_id->user_id)
                 ->first();

@@ -1,5 +1,4 @@
 <?php
-  use Core\Database;
 
   use Model\User;
   use Model\Auth;

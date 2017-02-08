@@ -3,26 +3,14 @@ $this->view('header', compact('title'));
 ?>
 
 <?php
-$this->view('sidebar');
+$this->view('sidebar', compact('admin'));
 ?>
-
-
-
-<!doctype html>
-<html>
-<head>
-    <title>User Configuration - SAweather</title>
-</head>
-
-<body>
-
-
 
 <div id="content">
 
 
     <div>
-        <a href ="#" class="button">Create new account</a>
+        <a href ="/createnewaccount" class="button">Create new account</a>
     </div>
 
     <div>

@@ -2,13 +2,9 @@
 $this->view('header', compact('title'));
 ?>
 
-    <!doctype html>
-    <html>
-    <head>
-        <title>Sign in - SAweather</title>
-    </head>
-
-    <body>
+<?php
+$this->view('sidebar', compact('admin'));
+?>
 
     <div class="container">
         <form class="form-signin" action="Login.php" method="post">

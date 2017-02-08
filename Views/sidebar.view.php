@@ -7,7 +7,7 @@
         //if user = admin then:
         if(isset($admin)){
           if($admin){
-            ?> <a href = "#" class ="button">User configuration</a> <?php
+            ?> <a href = "/userconfiguration" class ="button">User configuration</a> <?php
           }
         }
     ?>
