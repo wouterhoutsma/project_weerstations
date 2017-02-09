@@ -30,7 +30,7 @@ class UserConfiguration extends WeatherAppController{
         $objdetails = $user->select(['user_id', 'firstname', 'lastname', 'phone', 'email'])->get();
         $details = $this->getdetails($objdetails);
 
-        $this->view('userConfiguration', compact('title', 'admin', 'details'));
+        $this->view('userconfiguration', compact('title', 'admin', 'details'));
 
 
     }
@@ -117,7 +117,7 @@ class UserConfiguration extends WeatherAppController{
         $objdetails = $user->select(['user_id', 'firstname', 'lastname', 'phone', 'email'])->get();
         $details = $this->getdetails($objdetails);
 
-        $this->view('userConfiguration', compact('title', 'message', 'admin', 'details'));
+        $this->view('userconfiguration', compact('title', 'message', 'admin', 'details'));
 
     }
 
@@ -211,7 +211,7 @@ class UserConfiguration extends WeatherAppController{
         $objdetails = $user->select(['user_id', 'firstname', 'lastname', 'phone', 'email'])->get();
         $details = $this->getdetails($objdetails);
 
-        $this->view('userConfiguration', compact('title', 'message', 'admin', 'details'));
+        $this->view('userconfiguration', compact('title', 'message', 'admin', 'details'));
     }
 }
 ?>

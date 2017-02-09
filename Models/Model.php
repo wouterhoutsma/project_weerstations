@@ -122,10 +122,11 @@
           $this->where_set = true;
           if(is_array($value)){
             $value_string = "";
+            $enclosure = ($enclosed) ? "'" : "";
             for($i=0; $i < count($value); $i++){
               if($i != 0)
                 $value_string .= ", ";
-              $value_string .= htmlentities($value[$i]);
+              $value_string .= $enclosure . htmlentities($value[$i]) . $enclosure;
             }
             $operator = strtoupper($operator);
             $this->sql .= " $add `" . htmlentities($key) . "` $operator (" . $value_string . ")";

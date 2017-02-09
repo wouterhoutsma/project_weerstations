@@ -16,5 +16,5 @@
   Router::route('/assets/{file_name}', 'AssetController.asset');
 
   Router::route('/getweatherdata/{station}/{time}', 'StationController.get_data'); # 'API' call for the stations
-
+  Router::route('/dailypackage', 'WeatherAppController.get_package'); # Download the package
 ?>
