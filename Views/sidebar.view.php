@@ -16,6 +16,5 @@
           }
         }
     ?>
-
     <a href ="/dailypackage" class ="button" id="package">Download package</a>
 </div>
