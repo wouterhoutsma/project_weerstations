@@ -6,6 +6,7 @@
         $http = $_SERVER['REQUEST_SCHEME'];
         $host = $_SERVER['HTTP_HOST'];
         $base_url = $http . "://" . $host;
+
         ?>
       <link rel='stylesheet' href="<?php echo $base_url; ?>/assets/blub.css" type="text/css" />
       <?php
@@ -31,7 +32,7 @@
   <div id="header">
      <a href="/" class="title"> SA Weather </a>
       <div class="slogan">
-          <?php if(isset($_SESSION['user'])) { ?> <a href='/logout'>Logout</a><br/> <?php } ?>
+          <?php if(isset($_SESSION['user'])) { $name = $this->get_user(); echo $name->firstname; echo $name->lastname; ?> <a href='/logout'>Logout</a><br/> <?php } ?>
           Slogan placeholder
       </div>
   </div>

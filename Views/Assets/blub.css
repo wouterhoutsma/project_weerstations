@@ -18,7 +18,7 @@ body{
 .infobox .infoboxtext{
     visibility:hidden;
     width:150px;
-    background-color: #000370;
+    background-color: #0003b1;
     color:white;
     text-align:center;
     padding:5px;
@@ -183,17 +183,17 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
 }
 
 #footerspacer{
-  height: 115px; /* Must be height of footer + margin for randje */
+  height: 75px; /* Must be height of footer + margin for randje */
   position: relative;
 }
 .footer {
     background-color:white;
     position: absolute;
-    bottom: 0;
     width: 100%;
     border-top:solid;
     border-color:#0003d1;
     text-align: center;
+    height: 15px;
 }
 
 
