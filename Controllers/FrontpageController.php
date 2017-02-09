@@ -15,7 +15,7 @@
         exit();
       }
       $admin = Auth::isAdmin();
-      $title = "welkom buddy";
+      $title = "Welcome";
       $this->view('frontpage', compact('title', 'admin'));
     }
 
@@ -73,22 +73,35 @@
     public function firstlogin(){
       $title = "First login";
       $error = "";
+
+      //Put post in variables
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $phonenumber = $_POST['phonenumber'];
         $email = $_POST['emailaddress'];
         $oldemail = $_POST['oldemail'];
         $oldpassword = $_POST['oldpassword'];
-      if($_POST['firstname'] == ""
-          || $firstname == ""
+        //Check if all fields still exist
+        if(!isset($firstname)
+            || !isset($lastname)
+            || !isset($phonenumber)
+            || !isset($email)
+            || !isset($_POST['newpassword'])
+            || !isset($_POST['confirmpassword'])) {
+            $error .= "<li>Something went wrong, please try to refresh the page.</li>";
+        }
+
+        //Check if all neccessary fields are filled in
+      if($firstname == ""
           || $lastname == ""
           || $phonenumber == ""
           || $email == ""
           || $_POST['newpassword'] == ""
           || $_POST['confirmpassword'] == "") {
-        $error .= "<li>All fields have to be filled in, except for the file</li>";
+        $error .= "<li>All fields have to be filled in</li>";
       }
 
+      //Check if the password and confirmpassword are the same and if the password has the requirements
       if($_POST['newpassword'] != $_POST['confirmpassword']){
           $error .= "<li>The passwords don't match</li>";
       }
@@ -96,10 +109,11 @@
           $error .= "<li>Password needs to contain a combination of uppercase, lowercase and number characters</li>";
       }
 
-
-
+      //Make things nice
       $firstname = ucfirst(strtolower($firstname));
       $lastname = ucfirst(strtolower($lastname));
+
+      //Check if the phonenumber only consists numbers
       $acceptnumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
       $arrayphone = str_split($phonenumber);
       foreach($arrayphone as $value) {
@@ -109,16 +123,27 @@
           else {
             $error .= "<li>Phonenumber should only consists of numbers</li>";
           }
-
       }
+
+        //Check if new password isn't the same as the password given by admin
+        if($oldpassword == User::make_password($_POST['newpassword'])){
+          $error .= "<li>Your new password can't be the same as the password given by the admin.</li>";
+        }
+
+
+      //Get the user_id to get the right user
       $user = new User();
       $user_id = $user->select(['user_id'])
           ->where('email', '=', $oldemail, 1)
           ->where('password', '=', $oldpassword, 1)
           ->first();
+
+      //Check if its right
       if(!$user_id)
         $error .= "<li>Don't mess with the HTML please. Try going back and logging in again.</li>";
 
+
+      //Check if there were any errors to view
       if($error != ""){
           $error = sprintf("<ul>%s</ul>", $error);
           $this->view('firstlogin', compact('title', 'error', 'firstname', 'lastname', 'phonenumber', 'email', 'oldemail', 'oldpassword'));

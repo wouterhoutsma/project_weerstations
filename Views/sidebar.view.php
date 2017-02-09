@@ -7,7 +7,7 @@
         echo '<a href = "/station/'.$s->stn.'" class ="button">Weather Station <br/>'.$name.'</a>';
       }
     ?>
-    <a href = "/settings" class ="button">Account</a>
+    <a href = "/settings" class ="button">My account</a>
     <?php
         //if user = admin then:
         if(isset($admin)){
