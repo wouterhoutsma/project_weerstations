@@ -25,6 +25,11 @@ path {
     fill: none;
 }
 
+.title{
+    color: black;
+    text-decoration: none;
+}
+
 .axis path,
 .axis line {
     fill: none;

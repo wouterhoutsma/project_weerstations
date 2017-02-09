@@ -29,7 +29,7 @@
   </head>
   <body>
   <div id="header">
-     SA Weather
+     <a href="/" class="title"> SA Weather </a>
       <div class="slogan">
           <?php if(isset($_SESSION['user'])) { ?> <a href='/logout'>Logout</a><br/> <?php } ?>
           Slogan placeholder
