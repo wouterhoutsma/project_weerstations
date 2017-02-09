@@ -5,8 +5,9 @@ $this->view('header', compact('title', 'sources')); ?>
 $this->view('sidebar', compact('admin'));
 ?>
     <div id="content">
-        Hier komt station <?php echo $station; ?>
-        <div id="stationdata" style='width:50%;height:400px;'></div>
+        <div id="accountsettings">
+            <p>Station <?php echo $station; ?></p>
+        <div id="stationdata" style='min-width:600px;width:85%;height:400px;'></div>
         <script type='text/javascript'>
         $(function () {
           var points = <?php echo $points; ?>;
@@ -52,6 +53,7 @@ $this->view('sidebar', compact('admin'));
           },5000);
         });
         </script>
+        </div>
     </div>
 
 <?php

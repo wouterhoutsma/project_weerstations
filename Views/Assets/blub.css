@@ -4,6 +4,7 @@ body{
     background-color: aliceblue;
     position: relative;
     min-height: 100vh; /* vh = vertical height, 100vh = screen size */
+    min-width:900px;
 }
 
 #header {
@@ -71,6 +72,7 @@ path {
 #accountsettings .button {
     width: 150px;
     margin-top:30px;
+
 }
 .sidenav .button { width: 100% }
 
@@ -113,6 +115,7 @@ path {
     padding-top:5px;
     margin-left:170px;
     font-family:Verdana, Arial;
+
 
 
 }
