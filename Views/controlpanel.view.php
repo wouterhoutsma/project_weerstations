@@ -48,7 +48,7 @@
                     </tr>
 
                 </table>
-                <input type="file" name="profilepicture"/><br>
+                <br>
                 <input type="submit" class="button" value="Save"/>
             </form>
             <?php if(isset($error)){ ?>
