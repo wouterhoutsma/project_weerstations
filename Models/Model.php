@@ -153,6 +153,11 @@
         return $result[0];
       }
     }
+    public function order($column, $asc = false){
+      $order = ($asc) ? "ASC" : "DESC";
+      $this->sql .= " ORDER BY $column $order";
+      return $this;
+    }
     public function execute(){
       $db = Database::getInstance();
       $this->result = [];
