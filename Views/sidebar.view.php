@@ -1,4 +1,5 @@
 <div id="SideNav" class ="sidenav">
+    <div>
     <?php
       $stations = $this->generateWeatherStations();
       foreach($stations as $s){
@@ -16,6 +17,8 @@
           }
         }
     ?>
-
+        </div>
+<div>
     <a href ="#" class ="button" id="package">Download package</a>
+    </div>
 </div>

@@ -51,6 +51,7 @@ path {
     position:relative;
     float:left;
     clear: both;
+    min-height: 350px;
 }
 .noerror{
     background-color: rgba(9, 191, 28, 0.45);
@@ -94,9 +95,11 @@ path {
     margin-bottom:10px;
 }
 #package{
-    position:absolute;
-    bottom:0;
+    bottom: 0;
     width:150px;
+    position: absolute;
+
+
 }
 .button:hover{
     background-color: #0003d1;
