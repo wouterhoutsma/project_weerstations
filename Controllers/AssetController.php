@@ -14,6 +14,9 @@ class AssetController extends WeatherAppController{
       case 'js':
         header("Content-type: text/javascript");
         die(file_get_contents(__DIR__ . '/../Views/Assets/Scripts/' . $filename));
+    case 'png':
+        header("Content-type: image/png");
+        die(file_get_contents(__DIR__ . '/../Views/Assets/' . $filename));
     }
   }
 }
