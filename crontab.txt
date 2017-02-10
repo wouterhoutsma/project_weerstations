@@ -1,0 +1,1 @@
+59 23 * * * php /var/www/html/Cli/cron_daily.php

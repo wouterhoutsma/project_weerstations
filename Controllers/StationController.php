@@ -16,7 +16,10 @@
         exit();
       }
       $station_nr = $station;
-      $this_station = (new Station())->select()->where('stn', '=', $station)->first();
+      $this_station = (new Station())->select()
+                                     ->where('stn', '=', $station)
+                                     ->where('country', '=', 'PARAGUAY', 1)
+                                     ->first();
       if(!$this_station)
         header("Location: /");
       $station = ucwords(strtolower($this_station->name), " \t\r\n\f\v/");
@@ -28,13 +31,14 @@
                                             ->where('stn', '=', $station_nr)
                                             ->order('timedate')
                                             ->first();
-
+      //var_dump($base_measurement->TIMEDATE);
       $minutes = 10;
       $interval = 5;
-      $time_from = $base_measurement->timedate - ($minutes * 60);
-      //die(var_dump($base_measurement));
+      $time_from = $base_measurement->TIMEDATE - ($minutes * 60);
+      //die(var_dump($time_from));
       $measurements = $measurement_model->select()
                                         ->where('timedate', '>=', $time_from)
+                                        ->where('timedate', '<>', 0)
                                         ->where('stn', '=', $station_nr)
                                         ->order('timedate', true)
                                         ->get();
@@ -54,6 +58,7 @@
         $measurements = $measurement_model->select()
                                           ->where('timedate', '>', $from)
                                           ->where('stn', '=', $stn)
+                                          ->where('timedate', '<>', 0)
                                           ->order('timedate', true)
                                           ->get();
         $points = $this->make_json_from_weather_data($measurements);

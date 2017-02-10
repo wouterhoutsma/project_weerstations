@@ -56,19 +56,21 @@
       $total_temp += $measure->temp;
       $records++;
     }
-    $total_temp /= $weight;
-    $temp = round($total_temp,2); // 2 decimal places for temp
-    // Insert into averages
-    $insert = [
-      'day'     =>  (int)$day,
-      'month'   =>  (int)$month,
-      'year'    =>  (int)$year,
-      'stn'     =>  (int)$stn->stn,
-      'weight'  =>  (int)$weight,
-      'temp'    =>  (double)$temp
-    ];
+    if($weight > 0){
+      $total_temp /= $weight;
+      $temp = round($total_temp,2); // 2 decimal places for temp
+      // Insert into averages
+      $insert = [
+        'day'     =>  (int)$day,
+        'month'   =>  (int)$month,
+        'year'    =>  (int)$year,
+        'stn'     =>  (int)$stn->stn,
+        'weight'  =>  (int)$weight,
+        'temp'    =>  (double)$temp
+      ];
 
-    $a->insert($insert);
+      $a->insert($insert);
+    }
   }
   $m->delete()->where('timedate', '<', $latest_entry)->delete(1);
 

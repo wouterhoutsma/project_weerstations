@@ -57,14 +57,28 @@ $this->view('sidebar', compact('admin'));
                   highest_time = e[0];
                 points.push(e);
               });
-              console.log(data);
-              console.log(points.length);
-              if(points.length > 600){
-                console.log(points.length);
-                points.reverse();
-                points.pop();
-                points.reverse();
+              newPoints = [];
+              points.forEach(function(e){
+                if(e[0] > (highest_time/1000) - (10*60)){
+                  // minder dan 10 minuten geleden
+                  newPoints.push(e);
+                }
+              });
+              var sorting = true;
+              while(sorting){
+                sorting = false;
+                for(var i = 0; i < newPoints.length - 1; i++){
+                  if(i != newPoints.length - 1){
+                    if(newPoints[i][0] > newPoints[i+1][0]){
+                      var x = newPoints[i];
+                      newPoints[i] = newPoints[i+1];
+                      newPoints[i+1] = x;
+                      sorting = true;
+                    }
+                  }
+                }
               }
+              points = newPoints;
               $.plot($("#stationdata"), [{label:'Windspeed', color: '#66e', data:points}], options);
             });
           },5000);
