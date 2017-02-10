@@ -134,6 +134,20 @@ class UserController extends WeatherAppController{
             }
         }
 
+        //Check if email is already in use
+        $emails = $user->select(['user_id'])
+            ->where('email', '=', $newemail, 1)
+            ->where('user_id', '<>', $user_id->user_id)
+            ->first();
+        if($emails){
+            $error .= "<li>Email address already in use by another user.</li>";
+        }
+
+        //Check if email is valid
+        if(!filter_var($newemail, FILTER_VALIDATE_EMAIL)){
+            $error .= "<li>Email address isn't a valid email.</li>";
+        }
+
         //Make it nice
         $newfirstname = ucfirst(strtolower($newfirstname));
         $newlastname = ucfirst(strtolower($newlastname));

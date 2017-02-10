@@ -70,78 +70,94 @@
         $_SESSION['user'] = $hash;
     }
 
-    public function firstlogin(){
-      $title = "First login";
-      $error = "";
+    public function firstlogin()
+    {
+        $title = "First login";
+        $error = "";
 
-      //Put post in variables
+        //Put post in variables
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
-        $phonenumber = $_POST['phonenumber'];
-        $email = $_POST['emailaddress'];
+        $phonenumber = $_POST['phone'];
+        $email = $_POST['email'];
         $oldemail = $_POST['oldemail'];
         $oldpassword = $_POST['oldpassword'];
+        var_dump($_POST);
         //Check if all fields still exist
-        if(!isset($firstname)
+        if (!isset($firstname)
             || !isset($lastname)
             || !isset($phonenumber)
             || !isset($email)
             || !isset($_POST['newpassword'])
-            || !isset($_POST['confirmpassword'])) {
+            || !isset($_POST['confirmpassword'])
+        ) {
             $error .= "<li>Something went wrong, please try to refresh the page.</li>";
         }
 
         //Check if all neccessary fields are filled in
-      if($firstname == ""
-          || $lastname == ""
-          || $phonenumber == ""
-          || $email == ""
-          || $_POST['newpassword'] == ""
-          || $_POST['confirmpassword'] == "") {
-        $error .= "<li>All fields have to be filled in</li>";
-      }
+        if ($firstname == ""
+            || $lastname == ""
+            || $phonenumber == ""
+            || $email == ""
+            || $_POST['newpassword'] == ""
+            || $_POST['confirmpassword'] == ""
+        ) {
+            $error .= "<li>All fields have to be filled in</li>";
+        }
 
-      //Check if the password and confirmpassword are the same and if the password has the requirements
-      if($_POST['newpassword'] != $_POST['confirmpassword']){
-          $error .= "<li>The passwords don't match</li>";
-      }
-      elseif(!preg_match('/[A-Z]+[a-z]+[0-9]+/', $_POST['newpassword'])){
-          $error .= "<li>Password needs to contain a combination of uppercase, lowercase and number characters</li>";
-      }
+        //Check if the password and confirmpassword are the same and if the password has the requirements
+        if ($_POST['newpassword'] != $_POST['confirmpassword']) {
+            $error .= "<li>The passwords don't match</li>";
+        } elseif (!preg_match('/[A-Z]+[a-z]+[0-9]+/', $_POST['newpassword'])) {
+            $error .= "<li>Password needs to contain a combination of uppercase, lowercase and number characters</li>";
+        }
 
-      //Make things nice
-      $firstname = ucfirst(strtolower($firstname));
-      $lastname = ucfirst(strtolower($lastname));
+        //Make things nice
+        $firstname = ucfirst(strtolower($firstname));
+        $lastname = ucfirst(strtolower($lastname));
 
-      //Check if the phonenumber only consists numbers
-      $acceptnumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-      $arrayphone = str_split($phonenumber);
-      foreach($arrayphone as $value) {
-        if(in_array($value, $acceptnumbers)) {
-            continue;
-          }
-          else {
-            $error .= "<li>Phonenumber should only consists of numbers</li>";
-          }
-      }
+        //Check if the phonenumber only consists numbers
+        $acceptnumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+        $arrayphone = str_split($phonenumber);
+        foreach ($arrayphone as $value) {
+            if (in_array($value, $acceptnumbers)) {
+                continue;
+            } else {
+                $error .= "<li>Phonenumber should only consists of numbers</li>";
+            }
+        }
 
         //Check if new password isn't the same as the password given by admin
-        if($oldpassword == User::make_password($_POST['newpassword'])){
-          $error .= "<li>Your new password can't be the same as the password given by the admin.</li>";
+        if ($oldpassword == User::make_password($_POST['newpassword'])) {
+            $error .= "<li>Your new password can't be the same as the password given by the admin.</li>";
         }
 
 
-      //Get the user_id to get the right user
-      $user = new User();
-      $user_id = $user->select(['user_id'])
-          ->where('email', '=', $oldemail, 1)
-          ->where('password', '=', $oldpassword, 1)
-          ->first();
+        //Get the user_id to get the right user
+        $user = new User();
+        $user_id = $user->select(['user_id'])
+            ->where('email', '=', $oldemail, 1)
+            ->where('password', '=', $oldpassword, 1)
+            ->first();
 
-      //Check if its right
-      if(!$user_id)
-        $error .= "<li>Don't mess with the HTML please. Try going back and logging in again.</li>";
+        //Check if its right
+        if (!$user_id){
+            $error .= "<li>Don't mess with the HTML please. Try going back and logging in again.</li>";
+        }
 
+        //Check if email isn't already in use
+        $emails = $user->select(['user_id'])
+            ->where('email', '=', $email, 1)
+            ->where('user_id', '<>', $user_id->user_id)
+            ->first();
+        if($emails){
+            $error .= "<li>Email address already in use.</li>";
+        }
+
+        //Check if email is valid
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            $error .= "<li>Email address isn't a valid email.</li>";
+        }
 
       //Check if there were any errors to view
       if($error != ""){
