@@ -19,7 +19,7 @@ $this->view('header', compact('title')); ?>
                 </tr>
                 <tr>
                     <td>Email address:</td>
-                    <td style="width:600px;"><input type="text" name="email" value="<?php if(isset($email)) { echo $email; } ?>"/>
+                    <td style="width:600px;"><input type="text" name="email" value="<?php if(isset($email)) { echo $email; } elseif(isset($oldemail)) { echo $oldemail; } ?>"/>
                         <div class="infobox"><img src="/assets/information-icon-3.png"/>
                             <span class="infoboxtext">You will have to log in using this emailaddress.</span></div></td>
                 </tr>

@@ -193,10 +193,24 @@ class UserConfiguration extends WeatherAppController{
             $error .= "<li>Password needs to contain a combination of uppercase, lowercase and number characters</li>";
         }
 
+
+        $emails = $user->select(['user_id'])
+            ->where('email', '=', $newaccemail, 1)
+            ->first();
+        if($emails){
+            $error .= "<li>Email address already in use.</li>";
+        }
+
+        if(!filter_var($newaccemail, FILTER_VALIDATE_EMAIL)){
+            $error .= "<li>Email address isn't a valid email.</li>";
+        }
+
+
         //Check if there were any errors to view
         if($error != "") {
             $error = sprintf("<ul>%s</ul>", $error);
             $this->view('createnewaccount', compact('title', 'admin', 'error', 'newaccemail'));
+            return;
         }
 
         //Add new account to database
